@@ -1,0 +1,197 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: url('./HisNoodlyness.jpg') repeat;
+    background-size: 240px 200px;
+}
+
+header {
+    background-color: rgba(255, 204, 0, 0.8);
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%; /* Reduce el ancho del contenedor */
+    max-width: 500px; /* Establece un ancho máximo más estrecho */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+main article {
+    text-align: center; /* Centra el texto del artículo */
+    margin: 0 auto; /* Centra el artículo en el contenedor */
+    max-width: 100%; /* Permite que el artículo use el ancho completo del contenedor */
+}
+
+main article p {
+    font-weight: bold; /* Hace el texto más grueso */
+}
+
+aside {
+    flex: 1;
+    background-color: #e0e0e0;
+    padding: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px; /* Espaciado interno */
+    border: 2px solid transparent; /* Borde inicialmente transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra inicial */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+header nav ul li a:hover {
+    border: 2px solid black; /* Borde negro al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño al pasar el cursor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra más intensa al pasar el cursor */
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.small-image {
+    max-width: 650px;
+    width: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column; /* Alinea los eventos en columna */
+    align-items: center; /* Centra los elementos */
+}
+
+.event-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 80%; /* Ancho del contenedor del evento */
+    max-width: 400px; /* Ancho máximo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centra el texto */
+}
+
+.buy-button:hover {
+    background-color: #474747; /* Cambia el color al pasar el ratón */
+}
+
+.event-item.sold-out {
+    background-color: rgba(200, 200, 200, 0.5); /* Color de fondo apagado */
+    border: 1px solid #aaa; /* Borde más tenue */
+    color: #777; /* Color de texto apagado */
+}
+
+.buy-button {
+    background-color: #ccc; /* Color del botón para eventos agotados */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+    font-weight: bold;
+    transition: none; /* Sin transición para botones deshabilitados */
+}
+
+.highlight {
+    font-weight: bold; /* Texto en negrita */
+    color: #ffcc00; /* Color dorado */
+    background-color: rgba(255, 204, 0, 0.2); /* Fondo dorado suave */
+    padding: 5px; /* Espaciado alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    text-decoration: underline; /* Subraya el texto */
+    transition: color 0.3s, background-color 0.3s; /* Transición suave para cambios de color */
+}
+
+.highlight:hover {
+    color: #fff; /* Color del texto al pasar el cursor */
+    background-color: #ffcc00; /* Fondo dorado al pasar el cursor */
+}
+
+.benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido */
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.benefit-image {
+    max-width: 80%; /* Cambia esto según tu preferencia */
+    border-radius: 8px; /* Bordes redondeados para las imágenes */
+    margin: 10px 0; /* Margen superior e inferior para separar del texto */
+}
+
+h3 {
+    margin-top: 0; /* Quitar margen superior del encabezado */
+}
+
