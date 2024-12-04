@@ -1,0 +1,556 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: url('./imagenes/HisNoodlyness.jpg') repeat;
+    background-size: 240px 200px;
+}
+
+header {
+    background-color: rgba(255, 204, 0, 0.8);
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%; 
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+main article {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+main article p {
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 10px;
+}
+
+header .menu {
+    display: flex;
+    gap: 15px;
+    background-color: rgba(255, 204, 0, 0.8); /* Fondo más visible */
+    padding: 10px 20px; /* Espaciado adicional alrededor del menú */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para destacar el menú */
+    transition: background-color 0.3s ease; /* Transición para un efecto visual */
+}
+
+
+header .formulario {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    right: 0; /* Alinea 'formulario' a la derecha */
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header .formulario a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header .formulario a:hover {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+header .menu:hover {
+    background-color: rgba(255, 204, 0, 1); /* Color más intenso al pasar el cursor */
+}
+
+header .menu a {
+    color: #333; /* Color del texto */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s; /* Transición para efectos de hover */
+}
+
+header .menu a:hover {
+    color: #fff; /* Cambia el color del texto en hover */
+    background-color: #ff9900; /* Fondo de los enlaces al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño en hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
+}
+
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.small-image {
+    max-width: 650px;
+    width: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.buy-button:hover {
+    background-color: #474747;
+}
+
+.event-item.sold-out {
+    background-color: rgba(200, 200, 200, 0.5);
+    border: 1px solid #aaa;
+    color: #777;
+}
+
+.buy-button {
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: not-allowed;
+    font-weight: bold;
+    transition: none;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #ffcc00;
+    background-color: rgba(255, 204, 0, 0.2);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.highlight:hover {
+    color: #fff;
+    background-color: #ffcc00;
+}
+
+.benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.benefit-image {
+    max-width: 80%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+form input[type="date"] {
+    width: 50%;
+    padding: 13px 18px;
+    margin: auto;
+    font-size: 0.8em;
+    border-radius: 100px;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+form input[type="date"]:focus {
+    animation: bounce 1s;
+    -webkit-appearance: none;
+}
+
+label {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.required {
+    color: red;
+}
+
+.optional {
+    font-size: 12px;
+    color: #666;
+}
+
+button[type="submit"] {
+    width: 50%;
+    background-color: #ffcc00;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff9900;
+}
+
+.show-password-label {
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.show-password-label:hover {
+    color: #ffcc00;
+}
+
+/* Reset de estilo base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Estilo del header */
+header {
+    background-color: #ffcc00;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+/* Estilo para el contenido principal */
+main {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.event-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.event-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.event-item p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+}
+
+.add-to-favorites {
+    margin-top: 5px;
+    background-color: #ffcc00;
+}
+
+.add-to-favorites:hover {
+    background-color: #ff9900;
+}
+
+.add-to-cart {
+    margin-top: 5px;
+    background-color: #4caf50;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.event-item.sold-out {
+    background-color: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.event-item.sold-out button {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.comprar{
+    margin-left: 33%;
+}
+
+.cart, .favorites {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.cart h3, .favorites h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+#checkout {
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#checkout:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+}
+
+/* Estilo para el footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer nav ul li a:hover {
+    color: #ffcc00;
+}

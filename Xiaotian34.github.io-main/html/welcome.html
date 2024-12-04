@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <div class="welcome">
+    <h1>¡Bienvenido al sistema!</h1>
+    <p>Gracias por iniciar sesión. Estás dentro del sistema.</p>
+
+    <!-- Botón de cerrar sesión -->
+    <button onclick="logOut()">Cerrar sesión</button>
+  </div>
+
+  <script src="../scripts/firebase-config.js"></script>
+  <script>
+    // Función para cerrar sesión
+    function logOut() {
+      firebase.auth().signOut().then(() => {
+        // Redirigir al login después de cerrar sesión
+        window.location.href = '../html/login.html';
+      }).catch((error) => {
+        console.error('Error al cerrar sesión:', error);
+      });
+    }
+  </script>
+</body>
+</html>
