@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../scripts/carrito.js" defer></script>
+    <script src="../scripts/maps.js" defer></script>
+
     <title>Eventos del Pastafarismo</title>
 </head>
 <body>
@@ -57,6 +63,8 @@
                     </div>
                 </div>
             </div>
+
+            <div id="map" style="width: 60%; height: 400px;"></div>
             
             <div class="comprar">
                 <div class="cart">
@@ -71,7 +79,7 @@
                 </div>
             </div>
         </main>
-        <script src="scripts/carrito.js"></script>
+        
     <footer>
         <p>&copy; 2024 Pastafarismo. Todos los derechos reservados.</p>
         <div class="social-icons">

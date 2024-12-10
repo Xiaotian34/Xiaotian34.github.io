@@ -1,69 +1,55 @@
-// Importar las funciones desde firebase-config.js
-import { auth, database } from './firebase-config.js'; // Asegúrate de la ruta correcta
+document.addEventListener('DOMContentLoaded', function () {
+  // Manejo del formulario de registro
+  const registerForm = document.getElementById('register-form');
+  if (registerForm) {
+      registerForm.addEventListener('submit', function (event) {
+          event.preventDefault();
 
-// Obtener referencias a los formularios
-const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
+          const name = document.getElementById('register-name').value;
+          const email = document.getElementById('register-email').value;
+          const password = document.getElementById('register-password').value;
+          const confirmPassword = document.getElementById('register-confirm-password').value;
 
-// Función para manejar el registro
-registerForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+          if (password !== confirmPassword) {
+              alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+              return;
+          }
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const dob = document.getElementById('dob').value;
+          const users = JSON.parse(localStorage.getItem('users')) || [];
+          const userExists = users.some(user => user.email === email);
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+          if (userExists) {
+              alert('El correo ya está registrado. Usa otro correo o inicia sesión.');
+              return;
+          }
 
-      // Guarda la fecha de nacimiento en Realtime Database
-      set(ref(database, 'users/' + user.uid), {
-        email: user.email,
-        dob: dob,
-        registrationDate: new Date().toISOString()
+          users.push({ name, email, password });
+          localStorage.setItem('users', JSON.stringify(users));
+
+          alert('Registro exitoso. Ahora puedes iniciar sesión.');
+          window.location.href = 'login.html';
       });
+  }
 
-      console.log('Usuario registrado:', user);
-      alert('Registro exitoso');
-      
-      // Redirige a la página de inicio de sesión después del registro
-      window.location.href = 'login.html';
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      alert('Error: ' + errorMessage);
-    });
-});
+  // Manejo del formulario de inicio de sesión
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+      loginForm.addEventListener('submit', function (event) {
+          event.preventDefault();
 
-// Función para manejar el inicio de sesión
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+          const email = document.getElementById('login-email').value;
+          const password = document.getElementById('login-password').value;
 
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+          const users = JSON.parse(localStorage.getItem('users')) || [];
+          const user = users.find(user => user.email === email && user.password === password);
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+          if (!user) {
+              alert('Correo o contraseña incorrectos. Inténtalo de nuevo.');
+              return;
+          }
 
-      // Guarda la hora de acceso al sistema en Realtime Database
-      set(ref(database, 'loginHistory/' + user.uid), {
-        loginTime: new Date().toISOString()
+          alert(`Bienvenido, ${user.name}!`);
+          window.location.href = '../index.html';
       });
-
-      console.log('Usuario logueado:', user);
-      alert('Inicio de sesión exitoso');
-      
-      // Redirige a la página de bienvenida después del inicio de sesión
-      window.location.href = 'welcome.html';
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      alert('Error: ' + errorMessage);
-    });
+  }
 });

@@ -6,85 +6,79 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtener los eventos de la lista
     const events = document.querySelectorAll('.event-item');
 
-    // Cargar los datos guardados en LocalStorage
-    loadFavorites();
-    loadCart();
-
-    // Función para añadir un evento a la cesta
-    function addToCart(eventId, eventName) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        if (!cart.includes(eventId)) {
-            cart.push(eventId);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartDisplay(eventName);
-        }
+    // Función para guardar datos en LocalStorage de forma segura
+    function saveToLocalStorage(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
-    // Función para añadir un evento a los favoritos
-    function addToFavorites(eventId, eventName) {
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        if (!favorites.includes(eventId)) {
-            favorites.push(eventId);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            updateFavoritesDisplay(eventName);
-        }
+    // Función para cargar datos desde LocalStorage de forma segura
+    function loadFromLocalStorage(key) {
+        return JSON.parse(localStorage.getItem(key)) || [];
     }
 
-    // Actualizar la vista de la cesta
-    function updateCartDisplay(eventName) {
-        const li = document.createElement('li');
-        li.textContent = eventName;
-        cartItemsList.appendChild(li);
-    }
+    // Cargar favoritos y carrito desde LocalStorage
+    const favorites = loadFromLocalStorage('favorites');
+    const cart = loadFromLocalStorage('cart');
 
-    // Actualizar la vista de favoritos
-    function updateFavoritesDisplay(eventName) {
-        const li = document.createElement('li');
-        li.textContent = eventName;
-        favoritesList.appendChild(li);
-    }
-
-    // Cargar favoritos desde LocalStorage
-    function loadFavorites() {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        favorites.forEach(eventId => {
-            const eventName = document.querySelector(`.event-item[data-id="${eventId}"] h3`).textContent;
-            updateFavoritesDisplay(eventName);
-        });
-    }
-
-    // Cargar la cesta desde LocalStorage
-    function loadCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Función para actualizar la lista de la cesta
+    function updateCartDisplay() {
+        cartItemsList.innerHTML = '';
         cart.forEach(eventId => {
             const eventName = document.querySelector(`.event-item[data-id="${eventId}"] h3`).textContent;
-            updateCartDisplay(eventName);
+            const li = document.createElement('li');
+            li.textContent = eventName;
+            cartItemsList.appendChild(li);
         });
     }
 
-    // Asignar eventos a los botones de cada evento
+    // Función para actualizar la lista de favoritos
+    function updateFavoritesDisplay() {
+        favoritesList.innerHTML = '';
+        favorites.forEach(eventId => {
+            const eventName = document.querySelector(`.event-item[data-id="${eventId}"] h3`).textContent;
+            const li = document.createElement('li');
+            li.textContent = eventName;
+            favoritesList.appendChild(li);
+        });
+    }
+
+    // Inicializar listas
+    updateCartDisplay();
+    updateFavoritesDisplay();
+
+    // Asignar eventos a los botones
     events.forEach(event => {
-        const eventId = event.getAttribute('data-id');
+        const eventId = event.dataset.id;
         const eventName = event.querySelector('h3').textContent;
 
         // Botón de añadir a favoritos
-        const favoriteButton = event.querySelector('.add-to-favorites');
-        favoriteButton.addEventListener('click', () => {
-            addToFavorites(eventId, eventName);
+        event.querySelector('.add-to-favorites').addEventListener('click', () => {
+            if (!favorites.includes(eventId)) {
+                favorites.push(eventId);
+                saveToLocalStorage('favorites', favorites);
+                updateFavoritesDisplay();
+            }
         });
 
         // Botón de añadir a la cesta
-        const cartButton = event.querySelector('.add-to-cart');
-        cartButton.addEventListener('click', () => {
-            addToCart(eventId, eventName);
+        event.querySelector('.add-to-cart').addEventListener('click', () => {
+            if (!cart.includes(eventId)) {
+                cart.push(eventId);
+                saveToLocalStorage('cart', cart);
+                updateCartDisplay();
+            }
         });
     });
 
-    // Manejar el proceso de compra (simulación)
-    const checkoutButton = document.getElementById('checkout');
-    checkoutButton.addEventListener('click', () => {
+    // Botón de compra
+    document.getElementById('checkout').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('La cesta está vacía.');
+            return;
+        }
         alert('Compra realizada con éxito');
-        localStorage.removeItem('cart'); // Vaciar la cesta después de la compra
-        cartItemsList.innerHTML = ''; // Limpiar la lista de la cesta
+        localStorage.removeItem('cart');
+        cart.length = 0;
+        updateCartDisplay();
     });
 });
