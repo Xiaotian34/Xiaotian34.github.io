@@ -8,13 +8,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCdKEaKsiNhwweEvOLUe0ARvPOMBJ2rVn0",
-    authDomain: "pastafarismo-2a4cd.firebaseapp.com",
-    databaseURL: "https://pastafarismo-2a4cd-default-rtdb.firebaseio.com",
-    projectId: "pastafarismo-2a4cd",
-    storageBucket: "pastafarismo-2a4cd.firebasestorage.app",
-    messagingSenderId: "89636997884",
-    appId: "1:89636997884:web:3ce658421916cf6cf6e579"
+    apiKey: "AIzaSyBL_V0sJ20PvhgBVetHOLxnuu7tHCLmxyQ",
+    authDomain: "pastafarismo-dd89d.firebaseapp.com",
+    databaseURL: "https://pastafarismo-dd89d-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "pastafarismo-dd89d",
+    storageBucket: "pastafarismo-dd89d.firebasestorage.app",
+    messagingSenderId: "599613583747",
+    appId: "1:599613583747:web:bbc6632722ab2c00e406b6"
 };
 
 const app = initializeApp(firebaseConfig);
