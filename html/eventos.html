@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,73 +14,77 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="../scripts/carrito.js" defer></script>
     <script src="../scripts/maps.js" defer></script>
+    <script src="../scripts/auth.js" type="module" defer></script>
 
     <title>Eventos del Pastafarismo</title>
 </head>
+
 <body>
     <header>
         <h1>Eventos del Pastafarismo</h1>
         <nav>
             <ul>
-                <div class="menu">
+                <div class="menu1">
                     <li><a href="../index.html">Inicio</a></li>
                     <li><a href="beneficios.html">Beneficios</a></li>
                     <li><a href="eventos.html">Eventos</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </div>
-                <div class="formulario">
-                    <li><a href="login.html">Iniciar sesion</a></li>
-                    <li><a href="registro.html">Registrarse</a></li> 
-                </div>
             </ul>
         </nav>
     </header>
-        <main>
-            <div class="content">
-                <h2>Próximos Eventos</h2>
-                <div class="event-list">
-                    <div class="event-item" data-id="1">
-                        <h3>Concierto de Pasta</h3>
-                        <p>Fecha: 2024-12-01</p>
-                        <p>Ubicación: Sala de conciertos PastaCity</p>
-                        <button class="add-to-favorites">Añadir a favoritos</button>
-                        <button class="add-to-cart">Añadir a la cesta</button>
-                    </div>
-    
-                    <div class="event-item" data-id="2">
-                        <h3>Fiesta de Pastafarismo</h3>
-                        <p>Fecha: 2024-12-10</p>
-                        <p>Ubicación: Club PastaDream</p>
-                        <button class="add-to-favorites">Añadir a favoritos</button>
-                        <button class="add-to-cart">Añadir a la cesta</button>
-                    </div>
-    
-                    <div class="event-item" data-id="3">
-                        <h3>Conferencia de Fideísmo</h3>
-                        <p>Fecha: 2024-12-15</p>
-                        <p>Ubicación: Aula Pastafari</p>
-                        <button class="add-to-favorites">Añadir a favoritos</button>
-                        <button class="add-to-cart">Añadir a la cesta</button>
-                    </div>
-                </div>
-            </div>
+    <div class="menu-container">
+        <label class="hamburger">
+            <input type="checkbox">
+            <svg viewBox="0 0 32 32">
+                <path class="line line-top-bottom"
+                    d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                </path>
+                <path class="line" d="M7 16 27 16"></path>
+            </svg>
+        </label>
 
-            <div id="map" style="width: 60%; height: 400px;"></div>
-            
-            <div class="comprar">
-                <div class="cart">
-                    <h3>Cesta de Compra</h3>
-                    <ul id="cart-items"></ul>
-                    <button id="checkout">Realizar compra</button>
+        <nav class="menu2">
+            <ul>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <div class="content">
+            <h2>Próximos Eventos</h2>
+            <div class="event-list">
+                <div class="event-item" data-id="1">
+                    <h3>Concierto de Pasta</h3>
+                    <p>Fecha: 2024-12-01</p>
+                    <p>Ubicación: Sala de conciertos PastaCity</p>
+                    <button class="add-to-favorites">Añadir a favoritos</button>
+                    <button class="add-to-cart">Añadir a la cesta</button>
                 </div>
-        
-                <div class="favorites">
-                    <h3>Favoritos</h3>
-                    <ul id="favorites-list"></ul>
+
+                <div class="event-item" data-id="2">
+                    <h3>Fiesta de Pastafarismo</h3>
+                    <p>Fecha: 2024-12-10</p>
+                    <p>Ubicación: Club PastaDream</p>
+                    <button class="add-to-favorites">Añadir a favoritos</button>
+                    <button class="add-to-cart">Añadir a la cesta</button>
+                </div>
+
+                <div class="event-item" data-id="3">
+                    <h3>Conferencia de Fideísmo</h3>
+                    <p>Fecha: 2024-12-15</p>
+                    <p>Ubicación: Aula Pastafari</p>
+                    <button class="add-to-favorites">Añadir a favoritos</button>
+                    <button class="add-to-cart">Añadir a la cesta</button>
                 </div>
             </div>
-        </main>
-        
+        </div>
+
+        <div id="map" style="width: 60%; height: 400px;"></div>
+
+    </main>
+
     <footer>
         <p>&copy; 2024 Pastafarismo. Todos los derechos reservados.</p>
         <div class="social-icons">
@@ -88,5 +93,11 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
+    <div id="cookie-notification" class="cookie-notification">
+        <p>Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas el uso de cookies. <a
+                href="#">Más información</a>.</p>
+        <button id="accept-cookies" class="accept-cookies-btn">Aceptar</button>
+    </div>
 </body>
+
 </html>

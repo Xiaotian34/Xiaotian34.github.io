@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +9,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="../scripts/auth.js" type="module" defer></script>
     <title>Contacto del Pastafarismo</title>
 </head>
+
 <body>
     <header>
         <h1>Contacto</h1>
         <nav>
             <ul>
-                <div class="menu">
+                <div class="menu1">
                     <li><a href="../index.html">Inicio</a></li>
                     <li><a href="beneficios.html">Beneficios</a></li>
                     <li><a href="eventos.html">Eventos</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </div>
-                <div class="formulario">
-                    <li><a href="login.html">Iniciar sesion</a></li>
-                    <li><a href="registro.html">Registrarse</a></li> 
-                </div>
             </ul>
         </nav>
     </header>
+    <div class="menu-container">
+        <label class="hamburger">
+            <input type="checkbox">
+            <svg viewBox="0 0 32 32">
+                <path class="line line-top-bottom"
+                    d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                </path>
+                <path class="line" d="M7 16 27 16"></path>
+            </svg>
+        </label>
+
+        <nav class="menu2">
+            <ul>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </div>
     <div class="content">
         <main>
             <article>
                 <h2>Para más información, ora:</h2>
-                <p>"Nuestro espagueti, que estás en la olla, santificado sea tu fideo. Venga a nosotros tu salsa, hágase tu voluntad, así en la olla como en el plato. Danos hoy nuestro fideo diario, perdona nuestras ofensas, así como nosotros perdonamos a los que nos ofenden con las pizzas. No nos dejes caer en la tentación de las dietas, y líbranos de los carbohidratos. Porque tu eres el fideo, el poder y la salsa, por siempre y para siempre. ¡R'Amen!"</p>
+                <p>"Nuestro espagueti, que estás en la olla, santificado sea tu fideo. Venga a nosotros tu salsa, hágase
+                    tu voluntad, así en la olla como en el plato. Danos hoy nuestro fideo diario, perdona nuestras
+                    ofensas, así como nosotros perdonamos a los que nos ofenden con las pizzas. No nos dejes caer en la
+                    tentación de las dietas, y líbranos de los carbohidratos. Porque tu eres el fideo, el poder y la
+                    salsa, por siempre y para siempre. ¡R'Amen!"</p>
                 <img src="../imagenes/representaciones_monesvol.jpg" alt="contacto pastafarita">
                 <p>Si nuestro señor Monstruo de Espagueti Volador no le responde, contacte con nosotros por:</p>
                 <p>Telf: <span class="highlight">+91 649 25 02 75</span></p>
@@ -48,5 +69,11 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
+    <div id="cookie-notification" class="cookie-notification">
+        <p>Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas el uso de cookies. <a
+                href="#">Más información</a>.</p>
+        <button id="accept-cookies" class="accept-cookies-btn">Aceptar</button>
+    </div>
 </body>
+
 </html>

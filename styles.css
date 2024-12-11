@@ -33,13 +33,6 @@ main article p {
     font-weight: bold;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-
 footer nav ul {
     list-style-type: none;
     padding: 0;
@@ -53,11 +46,6 @@ footer {
     margin-top: auto;
 }
 
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
 header nav {
     display: flex;
     justify-content: center; 
@@ -65,7 +53,7 @@ header nav {
     margin-top: 10px;
 }
 
-header .menu {
+header .menu1 {
     display: flex;
     gap: 15px;
     background-color: rgba(255, 204, 0, 0.8); /* Fondo más visible */
@@ -73,14 +61,6 @@ header .menu {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para destacar el menú */
     transition: background-color 0.3s ease; /* Transición para un efecto visual */
-}
-
-
-header .formulario {
-    display: flex;
-    gap: 15px;
-    position: absolute;
-    right: 0; /* Alinea 'formulario' a la derecha */
 }
 
 header nav ul {
@@ -95,26 +75,11 @@ header nav ul li {
     margin: 0 10px;
 }
 
-header .formulario a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 5px;
-    background-color: #fff;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-header .formulario a:hover {
-    background-color: #ff9900;
-    color: #fff;
-}
-
-header .menu:hover {
+header .menu1:hover {
     background-color: rgba(255, 204, 0, 1); /* Color más intenso al pasar el cursor */
 }
 
-header .menu a {
+header .menu1 a {
     color: #333; /* Color del texto */
     font-weight: bold;
     text-decoration: none;
@@ -123,11 +88,152 @@ header .menu a {
     transition: color 0.3s, transform 0.3s; /* Transición para efectos de hover */
 }
 
-header .menu a:hover {
+header .menu1 a:hover {
     color: #fff; /* Cambia el color del texto en hover */
     background-color: #ff9900; /* Fondo de los enlaces al pasar el cursor */
     transform: scale(1.1); /* Aumenta el tamaño en hover */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
+}
+
+.hamburger {
+    color: #000000;
+    cursor: pointer;
+    position: fixed;
+    top: 10%; /* Ajusta la posición vertical */
+    left: 96%; /* Ajusta la posición horizontal */
+    z-index: 1000;
+    width: 50px; /* Establece el ancho de la caja interactiva */
+    height: 50px; /* Establece la altura de la caja interactiva */
+    display: flex; /* Usa flexbox para centrar el SVG dentro de la caja */
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    height: 3em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+/* Estilos del menú */
+.menu-container {
+    position: relative;
+}
+
+.menu2 {
+    position: fixed;
+    right: -250px;
+    top: 15%;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+    justify-content: flex-start; /* Asegura que el contenido se alinee arriba */
+    align-items: center;
+    transition: right 0.3s ease;
+}
+
+
+.menu2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.menu2 li {
+    margin-top: 10%;
+}
+
+.menu2 a {
+    color: #fff; /* Color del texto */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s; /* Transición para efectos de hover */
+    display: block; /* Asegura que los enlaces ocupen todo el ancho del menú */
+}
+
+.menu2 a:hover {
+    color: #fff; /* Cambia el color del texto en hover */
+    background-color: #ff9900; /* Fondo de los enlaces al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño en hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
+}
+
+/* Mostrar el menú cuando el checkbox está marcado */
+.hamburger input:checked ~ .menu2 {
+    right: 0;
+}
+
+/* Estilo para la notificación de cookies */
+.cookie-notification {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    display: none; /* Se oculta por defecto */
+}
+
+.cookie-notification p {
+    margin: 0;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.cookie-notification a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.accept-cookies-btn {
+    background-color: #ffcc00;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.accept-cookies-btn:hover {
+    background-color: #e6b800;
 }
 
 
@@ -561,3 +667,4 @@ footer nav ul li a {
 footer nav ul li a:hover {
     color: #ffcc00;
 }
+

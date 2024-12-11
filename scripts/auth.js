@@ -1,55 +1,123 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Manejo del formulario de registro
-  const registerForm = document.getElementById('register-form');
-  if (registerForm) {
-      registerForm.addEventListener('submit', function (event) {
-          event.preventDefault();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
-          const name = document.getElementById('register-name').value;
-          const email = document.getElementById('register-email').value;
-          const password = document.getElementById('register-password').value;
-          const confirmPassword = document.getElementById('register-confirm-password').value;
+const firebaseConfig = {
+    apiKey: "AIzaSyCdKEaKsiNhwweEvOLUe0ARvPOMBJ2rVn0",
+    authDomain: "pastafarismo-2a4cd.firebaseapp.com",
+    databaseURL: "https://pastafarismo-2a4cd-default-rtdb.firebaseio.com",
+    projectId: "pastafarismo-2a4cd",
+    storageBucket: "pastafarismo-2a4cd.firebasestorage.app",
+    messagingSenderId: "89636997884",
+    appId: "1:89636997884:web:3ce658421916cf6cf6e579"
+};
 
-          if (password !== confirmPassword) {
-              alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
-              return;
-          }
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-          const users = JSON.parse(localStorage.getItem('users')) || [];
-          const userExists = users.some(user => user.email === email);
+document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-          if (userExists) {
-              alert('El correo ya está registrado. Usa otro correo o inicia sesión.');
-              return;
-          }
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
 
-          users.push({ name, email, password });
-          localStorage.setItem('users', JSON.stringify(users));
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden. Inténtalo de nuevo.');
+                return;
+            }
 
-          alert('Registro exitoso. Ahora puedes iniciar sesión.');
-          window.location.href = 'login.html';
-      });
-  }
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert(`Registro exitoso, bienvenido ${name}!`);
+                window.location.href = 'login.html';
+            } catch (error) {
+                alert('Error en el registro: ' + error.message);
+            }
+        });
+    }
 
-  // Manejo del formulario de inicio de sesión
-  const loginForm = document.getElementById('login-form');
-  if (loginForm) {
-      loginForm.addEventListener('submit', function (event) {
-          event.preventDefault();
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-          const email = document.getElementById('login-email').value;
-          const password = document.getElementById('login-password').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-          const users = JSON.parse(localStorage.getItem('users')) || [];
-          const user = users.find(user => user.email === email && user.password === password);
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                alert('Inicio de sesión exitoso.');
+                window.location.href = '../index.html';
+            } catch (error) {
+                alert('Error al iniciar sesión: ' + error.message);
+            }
+        });
+    }
 
-          if (!user) {
-              alert('Correo o contraseña incorrectos. Inténtalo de nuevo.');
-              return;
-          }
+    const formularioNav = document.querySelector('.menu2');
 
-          alert(`Bienvenido, ${user.name}!`);
-          window.location.href = '../index.html';
-      });
-  }
+    const renderLogoutButton = () => {
+        formularioNav.innerHTML = `
+            <li><a href="cesta.html">Ver Cesta</a></li>
+            <li><a href="favoritos.html">Ver Favoritos</a></li>
+            <li>
+                <button id="logout-btn" style="background-color: red; color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                    Cerrar Sesión
+                </button>
+            </li>
+        `;
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                alert('Sesión cerrada exitosamente.');
+                window.location.href = 'home.html';
+            } catch (error) {
+                alert('Error al cerrar sesión: ' + error.message);
+            }
+        });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            renderLogoutButton();
+        } else {
+            formularioNav.innerHTML = `
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+            `;
+        }
+    });
+});
+
+document.querySelector('.hamburger input').addEventListener('change', function () {
+    const menu = document.querySelector('.menu2');
+    if (this.checked) {
+        menu.style.right = '0';
+    } else {
+        menu.style.right = '-250px';
+    }
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+    const cookieNotification = document.getElementById('cookie-notification');
+    const acceptButton = document.getElementById('accept-cookies');
+
+    if (!localStorage.getItem('cookies-accepted')) {
+        cookieNotification.style.display = 'block';
+    }
+
+    acceptButton.addEventListener('click', function () {
+        localStorage.setItem('cookies-accepted', 'true');
+        cookieNotification.style.display = 'none';
+    });
 });

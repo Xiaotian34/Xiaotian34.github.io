@@ -1,26 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtener referencias a los botones y listas
     const cartItemsList = document.getElementById('cart-items');
     const favoritesList = document.getElementById('favorites-list');
 
-    // Obtener los eventos de la lista
-    const events = document.querySelectorAll('.event-item');
-
-    // Función para guardar datos en LocalStorage de forma segura
     function saveToLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
     }
 
-    // Función para cargar datos desde LocalStorage de forma segura
     function loadFromLocalStorage(key) {
         return JSON.parse(localStorage.getItem(key)) || [];
     }
 
-    // Cargar favoritos y carrito desde LocalStorage
     const favorites = loadFromLocalStorage('favorites');
     const cart = loadFromLocalStorage('cart');
 
-    // Función para actualizar la lista de la cesta
     function updateCartDisplay() {
         cartItemsList.innerHTML = '';
         cart.forEach(eventId => {
@@ -31,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Función para actualizar la lista de favoritos
     function updateFavoritesDisplay() {
         favoritesList.innerHTML = '';
         favorites.forEach(eventId => {
@@ -42,16 +33,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Inicializar listas
     updateCartDisplay();
     updateFavoritesDisplay();
 
-    // Asignar eventos a los botones
+    const events = document.querySelectorAll('.event-item');
+
     events.forEach(event => {
         const eventId = event.dataset.id;
         const eventName = event.querySelector('h3').textContent;
 
-        // Botón de añadir a favoritos
         event.querySelector('.add-to-favorites').addEventListener('click', () => {
             if (!favorites.includes(eventId)) {
                 favorites.push(eventId);
@@ -60,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Botón de añadir a la cesta
         event.querySelector('.add-to-cart').addEventListener('click', () => {
             if (!cart.includes(eventId)) {
                 cart.push(eventId);
@@ -70,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Botón de compra
     document.getElementById('checkout').addEventListener('click', () => {
         if (cart.length === 0) {
             alert('La cesta está vacía.');
